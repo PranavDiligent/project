@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}  
+<div class="page-body">
+   <form>
+      <div class="container-fluid">
+         <div class="card p-3 project-list">
+            <div class="row m-0">
+               <div class="col-md-6 col-6">
+                  <h5 class="mb-0 mt-0">Cylinder Delivery Report</h5>
+               </div>
+               <div class="col-md-6 col-6">
+                  <a class="btn btn-danger m-0" href="" target="_blank" style="padding: 0;
+                     font-size: 14px;
+                     width: 33px;
+                     height: 33px;
+                     border-radius: 50%;
+                     display: flex;
+                     justify-content: center;
+                     align-items: center;"><i class="fa fa-print"></i></a>
+                  <span class="badge rounded-pill badge-info text-center mt-0 srch_spn "><i class="fa fa-search"></i></span>
+               </div>
+            </div>
+         </div>
+         <div class="card hidden-xs">
+            <div class="card-body p-4">
+               <div class="table-responsive">
+                  <table class="table">
+                     <thead>
+                        <tr>
+                           <th>Sl No.</th>
+                           <th>Party Name</th>
+                           <th>Order Details</th>
+                           <th>Delivery Details</th>
+                           <th>Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>1</td>
+                           <td>TEXMACO TEXMACO RAIL &amp; ENGG. LTD AGARPARA</td>
+                           <td>
+                              Type : <b>19 KG</b> <span class="badge badge-info f-12" style="position: relative;left: 0;top: -2px;padding: 3px 6px 0;letter-spacing: 0;">5 PCS</span><br>
+                              On <b>12/02/2022</b> at <b>10:30 PM</b><br>
+                              Estimated Value : <b><i class="fa fa-inr"></i> 500</b>
+                           </td>
+                           <td>
+                              Delivery Quantity : <b>10 PCS</b><br>
+                              On <b>12/02/2022</b> at <b>10:30 PM</b>
+                           </td>
+                           <td>
+                              <a class="btn btn-success px-2 py-1 f-12" href="" style="letter-spacing:0;">Challan </a>    
+                              <a class="btn btn-info px-2 py-1 f-12" href="" style="letter-spacing:0;">Bill </a>       
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div class="visible-xs">
+            <div class="card mt-2">
+               <div class="card-body p-3">
+                  <span class="badge badge-info f-16 w-100 py-1 mb-3" style="position: relative;left: 0;top: -2px;padding: 3px 6px 0;letter-spacing: 0;white-space: normal;">1. TEXMACO TEXMACO RAIL &amp; ENGG. LTD AGARPARA</span>
+                  <div>
+                     <h5 class="mb-1">Product : <b>19KG</b> <span class="badge badge-primary f-12" style="position: relative;left: 0;top: -2px;padding: 3px 6px 0;letter-spacing: 0;">5 PCS</span></h5>
+                     <p class="mb-1">Order Date &amp; Time :  <b> 12/02/2022 &amp; 10:30 PM</b></p>
+                     <p class="mb-1">Estimated Value : <b><i class="fa fa-inr"></i> 500</b></p>
+                  </div>
+                  <hr class="my-3">
+                  <div>
+                     <p class="mb-1">Delivery Quantity : <b>10 PCS</b></p>
+                     <p class="mb-1">Order Date &amp; Time :  <b> 12/02/2022 &amp; 10:30 PM</b></p>
+                  </div>
+                  <hr class="my-3">
+                  <div class="text-center">
+                     <a class="btn btn-success px-2 py-1 f-12" href="" style="letter-spacing:0;">Challan </a>    
+                     <a class="btn btn-primary px-2 py-1 f-12" href="" style="letter-spacing:0;">Bill </a>       
+                  </div>
+               </div>
+            </div>
+            <div class="card mt-2">
+               <div class="card-body p-3">
+                  <span class="badge badge-info f-16 w-100 py-1 mb-3" style="position: relative;left: 0;top: -2px;padding: 3px 6px 0;letter-spacing: 0;white-space: normal;">1. TEXMACO TEXMACO RAIL &amp; ENGG. LTD AGARPARA</span>
+                  <div>
+                     <h5 class="mb-1">Product : <b>19KG</b> <span class="badge badge-primary f-12" style="position: relative;left: 0;top: -2px;padding: 3px 6px 0;letter-spacing: 0;">5 PCS</span></h5>
+                     <p class="mb-1">Order Date &amp; Time :  <b> 12/02/2022 &amp; 10:30 PM</b></p>
+                     <p class="mb-1">Estimated Value : <b><i class="fa fa-inr"></i> 500</b></p>
+                  </div>
+                  <hr class="my-3">
+                  <div>
+                     <p class="mb-1">Delivery Quantity : <b>10 PCS</b></p>
+                     <p class="mb-1">Order Date &amp; Time :  <b> 12/02/2022 &amp; 10:30 PM</b></p>
+                  </div>
+                  <hr class="my-3">
+                  <div class="text-center">
+                     <a class="btn btn-success px-2 py-1 f-12" href="" style="letter-spacing:0;">Challan </a>    
+                     <a class="btn btn-primary px-2 py-1 f-12" href="" style="letter-spacing:0;">Bill </a>       
+                  </div>
+               </div>
+            </div>
+            <div class="card mt-2">
+            </div>
+         </div>
+      </div>
+   </form>
+</div>
+<div class="right_panel">
+   <div class="pc-item pc-caption d-flex">
+      <h6 class="flex_1">Filter Cylinder Delivery Report</h6>
+      <p class="dropdown_top_icon close_right_panel">
+         <i class="fa fa-times "></i>
+      </p>
+      <hr class="menu_hr">
+   </div>
+   <div class="filter_scroll">
+      <div class="px-4 mb-2">
+         <label class=" col-form-label pb-0">Customer </label>
+         <select class="form-control">
+            <option></option>
+         </select>
+      </div>
+      <div class="px-4 mb-2">
+         <label class=" col-form-label pb-0">Zone</label>
+         <select class="form-control">
+            <option></option>
+         </select>
+      </div>
+      <div class="px-4 mb-2">
+         <label class=" col-form-label pb-0">From Date </label>
+         <input type="date" class="form-control">
+      </div>
+      <div class="px-4 mb-2">
+         <label class=" col-form-label pb-0">To Date </label>
+         <input type="date" class="form-control">
+      </div>
+   </div>
+   <div class="bottom_search px-4 py-3">
+      <button type="submit" class="btn btn-primary tx-12 py-2"><i class="fa fa-search"></i> Search</button>
+      <button type="submit" class="btn btn-grey-light tx-12 py-2"><i class="fa fa-sync"></i> Reset</button>
+   </div>
+</div>
+{% endblock content %}

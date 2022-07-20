@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+ 
+{% block style %}
+<style>
+   .w-50-m-auto{width:50%!important;margin:auto!important;}
+</style>
+{% endblock style %}
+
+
+{% block content %}
+
+<div class="page-body">
+   <form>
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-sm-12 col-md-6">
+            <div class="card">
+               <div class="card-header px-4 py-3">
+                  <h5>Party Details</h5>
+               </div>
+               <div class="card-body p-4 rs-py-10">
+                  <div class="mb-2 row">
+                     <label class="col-md-4 col-form-label rs-pb-0">Party Name</label>
+                     <div class="col-md-8">
+                        <div class="input-group">
+                           <input class="form-control" type="text">
+                        </div>
+                     </div>
+                  </div>
+                  
+                  <div class="mb-2 row">
+                     <label class="col-md-4 col-form-label rs-pb-0">Zone Name</label>
+                     <div class="col-md-8">
+                        <div class="input-group">
+                           <input class="form-control" type="text">
+                        </div>
+                     </div>
+                  </div>
+                  <div class="mb-2 row">
+                     <label class="col-md-4 col-form-label rs-pb-0">Contact Person Name</label>
+                     <div class="col-md-8">
+                        <div class="input-group">
+                           <input class="form-control" type="text">
+                        </div>
+                     </div>
+                  </div>
+                  <div class="mb-2 row">
+                     <label class="col-md-4 col-form-label rs-pb-0">Contact No.</label>
+                     <div class="col-md-8">
+                        <div class="input-group">
+                           <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                           <input class="form-control" type="text">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-sm-12 col-md-6">
+            <div class="card">
+               <div class="card-header px-4 py-3">
+                  <h5>Contact Details</h5>
+               </div>
+               <div class="card-body p-4 rs-py-10">
+                  <div class="mb-2 row">
+                     <label class="col-md-4 col-form-label rs-pb-0">Address </label>
+                     <div class="col-md-8">
+                        <div class="input-group">
+                           <textarea class="form-control"></textarea>
+                        </div>
+                     </div>
+                  </div>
+                  
+                  
+                  <div class="mb-2 row">
+                     <label class="col-md-4 col-form-label rs-pb-0">Contact No.</label>
+                     <div class="col-md-8">
+                        <div class="input-group">
+                           <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                           <input class="form-control" type="text">
+                        </div>
+                     </div>
+                  </div>
+                  <div class="mb-2 row">
+                     <label class="col-md-4 col-form-label rs-pb-0">Email ID</label>
+                     <div class="col-md-8">
+                        <div class="input-group">
+                           <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                           <input class="form-control" type="text" placeholder="Email">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="card">
+               <div class="card-body p-4 rs-py-10">
+                    <div class="mb-2 row">
+                        <div class="col-md-4">
+                            <label class="col-form-label rs-pb-0 pb-0">PAN No</label>
+                            <input class="form-control" type="text">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="col-form-label rs-pb-0 pb-0">GST No.</label>
+                            <input class="form-control" type="text">
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <label class="col-form-label rs-pb-0 pb-0">Billing Limit Amount</label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+         <div class="col-md-12">
+            <div class="card">
+            <div class="card-header px-4 py-3 rs-py-10">
+                  <h5>Cylinder Details </h5>
+               </div>
+               <div class="card-body p-4">
+                    <div class="mb-2 row">
+                        <label class="col-md-2 col-form-label rs-pb-0">Cylinder Type</label>
+                        <div class="col-md-3">
+                            <select class="form-select">
+                                <option></option>
+                            </select>
+                            
+                        </div>
+                        <div class="col-md-2">
+                            <span class="badge rounded-pill badge-info p-relative mb-1 mt-1 f-14 text-center">Rate : <i class="fa fa-inr"></i> 500 </span>
+                        </div>
+                        <label class="col-md-1 col-form-label rs-pb-0">Discount</label>
+                        <div class="col-md-2 col-9">
+                            <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-inr"></i></span>
+                            <input class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-1 col-3">
+                            <button class="btn btn-primary px-3 addBtn" type="button"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="hidden-xs">
+                    <div class="table-responsive hideall addSlide" style="display: none;">
+                        <table class="table">
+                        <thead>
+                            <tr>
+                            <th>Sl No.</th>
+                            <th>Cylinder Type</th>
+                            <th>Rate</th>
+                            <th>Discount</th>
+                            <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td>1</td>
+                            <td>Demo</td>
+                            <td>Demo</td>
+                            <td>Demo</td>
+                            <td>
+                                <a href="" class="action-box large delete-btn f-18" title="" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Delete">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                    </div>
+                    <div class="visible-xs">
+                        <div class="hideall addSlide">
+                            <div class="flex_1 text-end rs-text-left room_dv">
+                            <h6 class="mb-1 mt-0">1. Cylinder Type : 19 KG <button class="btn btn-danger rs-f-right" type="button" style="float: none;padding: 3px 5px 1px;font-size: 12px;line-height: 14px;vertical-align: top;margin-left: 10px;"><i class="fa fa-trash"></i></button>
+                            </h6>
+                            <p class="mb-1">Rate : <b><i class="fa fa-inr"></i> 500</b></p>
+                                <p class="mb-0">Discount : <b><i class="fa fa-inr"></i> 100</b></p>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+                    <div class="card-footer text-end py-4 rs-py-10">
+                        <div class="col-sm-9 offset-sm-3">
+                           <button class="btn btn-primary" type="submit" data-bs-original-title="" title="">Submit</button>
+                           <input class="btn btn-light" type="reset" value="Cancel" data-bs-original-title="" title="">
+                        </div>
+                     </div>
+            </div>
+        </div>
+      </div>
+   </div>
+   </form>
+</div>
+
+
+
+{% endblock content %}

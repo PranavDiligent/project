@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}  
+<div class="page-body">
+   <form>
+      <div class="container-fluid">
+         <div class="card p-3 project-list">
+            <div class="row m-0">
+               <div class="col-md-6 col-6">
+                  <h5 class="mb-0 mt-0">Place Order</h5>
+               </div>
+               <div class="col-md-6 col-6">
+                  <a class="btn btn-primary rs_add" href="{% url 'add_place_order' %} " data-bs-original-title="" title=""><i class="fa fa-plus-square"></i> <b class="hidden-xs">Add New</b></a>
+                  <span class="badge rounded-pill badge-info text-center mt-0 srch_spn "><i class="fa fa-search"></i></span>
+               </div>
+            </div>
+         </div>
+         <div class="card hidden-xs">
+            <div class="card-body p-4">
+               <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>	
+                          <th>Sl No.</th>							
+                          				
+                          <th>Party Details</th>
+                          
+                          <th>Cylinder Details</th>
+                          <th>Actual Delivery Qty.</th><th> Dates</th>
+                          <th>Estimated Value</th>
+                        <th>Status</th><th>Action</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                         
+                         <td>19 KG COMMISION OF SALE <br><span class="badge rounded-pill badge-primary "><i class="fa fa-map-marker"></i></span> Kolkata- 700110, West Bengal (Code : 19)<br><a href="tel:+5566565656" class="btn p-0 ">
+                               <span class="badge rounded-pill badge-primary "><i class="fa fa-phone"></i></span>
+                               9804589658
+                            </a></td>
+                         
+                         <td> Type : <b>19KG</b><br> Quantity : <b>1</b></td>
+                         <td>1
+                            
+                         </td>
+                         <td>
+                             Ordered Date : <b>12/02/2020</b>
+                            <br>
+                            Delivery Date  : <b>12/02/2020</b>
+                         </td><td>
+                            
+                            <b><i class="fa fa-inr"></i> 19220</b>
+                        </td>
+                        <td>M MUKTA SEE-7044539457</td>
+                        <td>
+                            <a href="{% url 'cancel_order' %} " class="action-box large delete-btn f-16" title="Cancel">
+                                <i class="fa fa-times"></i>
+                            </a>
+                            <span class=" f-14 px-1">|</span>
+                            <a href="{% url 'view_place_order' %} " class="action-box large delete-btn f-16" title="View">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                            <span class=" f-14 px-1">|</span>
+                            <a href="" class="action-box large delete-btn f-16" title="Edit">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <span class=" f-14 px-1">|</span>
+                            <a href="" class="action-box large complete-btn f-16" title="Track">
+                                <i class="fa fa-map-marker"></i>
+                            </a>
+                            </td>
+                            </tr>
+                      </tbody>
+                    </table>
+                  </div>
+               </div>
+         </div>
+         <div class="visible-xs">
+            <div class="card mt-2">
+               <div class="card-body p-3">
+                     <h5 class="mb-3 badge badge-info w-100 f-18 py-1">Party : Titagarh Wagan(Steel) Limited</h5>
+                     <div class="ttl-info text-start">
+                        <a class="btn p-0 ">
+                        <span class="badge rounded-pill badge-primary "><i class="fa fa-map-marker"></i></span></a><span> Titagarh Wagan(Steel) Limited 1, A. Q. ROAD, 24 PGS. (N)</span>
+                        <br><a href="" class="btn p-0 ">
+                        <span class="badge rounded-pill badge-primary "><i class="fa fa-phone"></i></span>
+                        9804589658
+                        </a>
+                        
+                        
+                     </div>
+                      <div class="rs-text-left rs-mt-25">
+                         <hr>
+                         
+                         <h6 class="mb-1 f-14">Cylinder Type : <b>19Kg</b></h6>
+                         <h6 class="mb-1 f-14">Cylinder Quantity : <b>30Pcs</b></h6><h6 class="mb-1 f-14">Actual Delivery Qty. : <b>30Pcs</b></h6><h6 class="mb-1 f-14">Order Date : <b>10/02/2022</b></h6><h6 class="mb-1 f-14">Delivery Date : <b>10/02/2022</b></h6><h6 class="mb-0 f-14">Estimated Value : <b>5000/-</b> </h6>
+                      <h6 class="mb-0 f-14">Status : <b>M MUKTA SEE-7044539457</b> </h6></div>
+                        <hr>
+<div class="text-center">
+                     <a class="btn btn-danger px-2 py-1 f-12" href="{% url 'cancel_order' %}" style="letter-spacing:0;">Cancel </a>    
+                     <a class="btn btn-primary px-2 py-1 f-12" href="{% url 'view_place_order' %}" style="letter-spacing:0;">View </a>   
+                     <a class="btn btn-warning px-2 py-1 f-12" href="" style="letter-spacing:0;">Edit </a>   
+                     <a class="btn btn-success px-2 py-1 f-12" href="" style="letter-spacing:0;">Track</a>       
+                  </div>
+                         
+                         
+                         
+                         
+                         
+                         
+                    </div>
+            </div>
+            <div class="card mt-2">
+               <div class="card-body p-3">
+                     <h5 class="mb-3 badge badge-info w-100 f-18 py-1">Party : Titagarh Wagan(Steel) Limited</h5>
+                     <div class="ttl-info text-start">
+                        <a class="btn p-0 ">
+                        <span class="badge rounded-pill badge-primary "><i class="fa fa-map-marker"></i></span></a><span> Titagarh Wagan(Steel) Limited 1, A. Q. ROAD, 24 PGS. (N)</span>
+                        <br><a href="" class="btn p-0 ">
+                        <span class="badge rounded-pill badge-primary "><i class="fa fa-phone"></i></span>
+                        9804589658
+                        </a>
+                        
+                        
+                     </div>
+                      <div class="rs-text-left rs-mt-25">
+                         <hr>
+                         
+                         <h6 class="mb-1 f-14">Cylinder Type : <b>19Kg</b></h6>
+                         <h6 class="mb-1 f-14">Cylinder Quantity : <b>30Pcs</b></h6><h6 class="mb-1 f-14">Actual Delivery Qty. : <b>30Pcs</b></h6><h6 class="mb-1 f-14">Order Date : <b>10/02/2022</b></h6><h6 class="mb-1 f-14">Delivery Date : <b>10/02/2022</b></h6><h6 class="mb-0 f-14">Estimated Value : <b>5000/-</b> </h6>
+                      <h6 class="mb-0 f-14">Status : <b>M MUKTA SEE-7044539457</b> </h6></div>
+                        <hr>
+<div class="text-center">
+                     <a class="btn btn-danger px-2 py-1 f-12" href="{% url 'cancel_order' %}" style="letter-spacing:0;">Cancel </a>    
+                     <a class="btn btn-primary px-2 py-1 f-12" href="{% url 'view_place_order' %}" style="letter-spacing:0;">View </a>   
+                     <a class="btn btn-warning px-2 py-1 f-12" href="" style="letter-spacing:0;">Edit </a>   
+                     <a class="btn btn-success px-2 py-1 f-12" href="" style="letter-spacing:0;">Track</a>       
+                  </div>
+                         
+                         
+                         
+                         
+                         
+                         
+                    </div>
+            </div>
+         </div>
+      </div>
+   </form>
+</div>
+<div class="right_panel">
+   <div class="pc-item pc-caption d-flex">
+      <h6 class="flex_1">Filter</h6>
+      <p class="dropdown_top_icon close_right_panel">
+         <i class="fa fa-times "></i>
+      </p>
+      <hr class="menu_hr">
+   </div>
+   <div class="filter_scroll">
+      <div class="px-4 mb-2">
+         <label class=" col-form-label pb-0">From Date </label>
+         <input type="date" class="form-control">
+      </div>
+      <div class="px-4 mb-2">
+         <label class=" col-form-label pb-0">To Date </label>
+         <input type="date" class="form-control">
+      </div>
+   </div>
+   <div class="bottom_search px-4 py-3">
+      <button type="submit" class="btn btn-primary tx-12 py-2"><i class="fa fa-search"></i> Search</button>
+      <button type="submit" class="btn btn-grey-light tx-12 py-2"><i class="fa fa-sync"></i> Reset</button>
+   </div>
+</div>
+{% endblock content %}
