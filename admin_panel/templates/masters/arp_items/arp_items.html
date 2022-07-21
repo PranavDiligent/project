@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="page-body">
+    <form>
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="card p-3 py-2">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-primary">Produts</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary">Services</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card rs-mt-10 rs-br-0">
+                <div class="card-body p-4 rs-p-0">
+                    
+                    <div class="">
+                        <table class="table rs_table">
+                            <div class="col-md-6">
+                                <button class="btn btn-primary">ADD</button>
+                            </div>
+                            <thead>
+                                <tr>
+                                    <th class="rs-w-5"><span class="hidden-xs">Sl No.</span></th>
+                                    <th>Reason</th>
+                                    <th>Date</th>
+                                    <th class="rs-text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in products %}
+
+                                <tr>
+                                    <td class="rs-pr-0">
+                                        <span class="badge rounded-pill badge-primary visible-xs">{{ forloop.counter
+                                            }}</span>
+                                        <span class="hidden-xs">{{ forloop.counter }}</span>
+                                    </td>
+                                    <td>{{ product.name}}</td>
+                                    <td>{{ product.price_per_unit}}</td>
+                                    <td class="rs-text-right"><a href="{% url 'product_edit' product.id %}"
+                                            class="btn btn-primary">edit</a></td>
+                                </tr>
+
+                                {% endfor %}
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid Ends-->
+    </form>
+</div>
+
+
+
+{% endblock content %}

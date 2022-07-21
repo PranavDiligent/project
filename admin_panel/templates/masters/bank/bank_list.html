@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="page-body">
+  <form>
+    <div class="container-fluid">
+      <div class="card p-3 project-list">
+        <div class="row m-0">
+          <div class="col-md-6 col-6">
+            <h5 class="mb-0 mt-2">Bank Account</h5>
+          </div>
+          <div class="col-md-6 col-6">
+            <a
+              class="btn btn-primary rs_add"
+              href="{% url 'bank_add' %} "
+              data-bs-original-title=""
+              title=""
+              ><i class="fa fa-plus-square"></i>
+              <b class="hidden-xs">Add Account</b></a
+            >
+            <span
+              class="badge rounded-pill badge-info text-center mt-0 srch_spn"
+              ><i class="fa fa-search"></i
+            ></span>
+          </div>
+        </div>
+        <div class="card rs-mt-10 rs-br-0">
+          <div class="card-body p-4 rs-p-0">
+            <div class="">
+              <table class="table rs_table">
+                <thead>
+                  <tr>
+                    <th class="rs-w-5">
+                      <span class="hidden-xs">Sl No.</span>
+                    </th>
+                    <th>Account Name</th>
+                    <th>Account Balance</th>
+                    <th class="rs-text-right">As on</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for bank in bank_list %}
+                  <tr>
+                    <td class="rs-pr-0">
+                      <span class="badge rounded-pill badge-primary visible-xs"
+                        >{{ forloop.counter }}</span
+                      >
+                      <span class="hidden-xs">{{ forloop.counter }}</span>
+                    </td>
+                    <td>{{ bank.name }}</td>
+                    <td>{{ bank.balance }}</td>
+                    <td>{{ bank.as_on }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock content %}

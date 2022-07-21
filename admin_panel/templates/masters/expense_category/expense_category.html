@@ -9,7 +9,10 @@
         <div class="card p-3 py-2">
             <div class="row">
                 <div class="col-md-6">
-                    <h5 class="mb-0 mt-2">My Zone</h5>
+                    <h5 class="mb-0 mt-2">Expense Category</h5>
+                </div>
+                <div class="col-md-6">
+                    <a href="{% url 'designation_add' %} " class="btn btn-primary rs-text-right">Add</a>
                 </div>
             </div>
         </div>
@@ -20,20 +23,21 @@
                         <thead>
                             <tr>
                                 <th class="rs-w-5"><span  class="hidden-xs">Sl No.</span></th>
-                                <th>Designation</th>
+                                <th>Category</th>
                                 <th class="rs-text-right">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for designation in designations %}
+                            {% for cat in category %}
                             
                             <tr>
                                 <td class="rs-pr-0">
                                     <span class="badge rounded-pill badge-primary visible-xs">{{ forloop.counter }}</span>
                                     <span class="hidden-xs">{{ forloop.counter }}</span>
                                 </td>
-                                <td>{{ designation.name }}</td>
-                                <td class="rs-text-right"><a href="" class="btn btn-primary">edit</a></td>
+                                <td>{{ cat.name }}</td>
+                                <td>{{ cat.expenseType }}</td>
+                                <td class="rs-text-right"><a href="{% url 'expense_category_edit' cat.id %}" class="btn btn-primary">edit</a></td>
                             </tr>
 
                             {% endfor %}
