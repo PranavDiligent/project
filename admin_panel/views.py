@@ -127,6 +127,56 @@ def arp_items(request):
 
 
 
+
+
+def product_add(request):
+    if request.method == "POST":
+        data = request.POST
+        productname = data["productname"]
+        category = data["category"]
+        hsn_code = data["hsn_code"]
+        product_code = data["product_code"]
+        sale_price = data["sale_price"]
+        sale_price_type = data["sale_tax_type"]
+        purchase_price = data["purchase_price"]
+        purchase_price_type = data["purchase_taxtype"]
+        tax_rate = data["tax_rate"]
+        opening_stock = data["opening_stock"]
+        price_per_unit = data["price_per_unit"]
+        date = data["date"]
+        minimum_stock_quantity = data["minimum_stock_quantity"]
+        unit = data["unit"]
+
+        p = ArpProduct(
+        name = productname,
+        category = category,
+        hsn_code = hsn_code,
+        product_code = product_code,
+        sale_price = sale_price,
+        sale_price_with_tax = sale_price_type,
+        purchase_price = purchase_price,
+        purchase_price_with_tax = purchase_price_type,
+        tax_rate = tax_rate,
+        opening_stock = opening_stock,
+        price_per_unit = price_per_unit,
+        date = date,
+        minimum_stock_quantity = minimum_stock_quantity,
+        unit = unit 
+        )
+        
+       
+        p.save()
+        return redirect("arp_items")
+    else:
+        product = ArpProduct
+        categorys = Category.objects.all()
+        gst = Gst.objects.all()
+    return render(request,"masters/arp_items/product_add.html",{"product":product,"categorys":categorys,"gst":gst})
+
+
+
+
+
 def product_edit(request,id):
     if request.method == "POST":
         data = request.POST
@@ -164,8 +214,181 @@ def product_edit(request,id):
         return redirect("arp_items")
     else:
         product = ArpProduct.objects.get(pk=id)
-    return render(request,"masters/arp_items/product_edit.html",{"product":product})
+        categorys = Category.objects.all()
+        gst = Gst.objects.all()
+    return render(request,"masters/arp_items/product_edit.html",{"product":product,"categorys":categorys,"gst":gst})
 
+
+
+
+def service_add(request):
+    if request.method == "POST":
+        data = request.POST
+        sname = data["name"]
+        hsn = data["hsn"]
+        price = data["price"]
+        tax_type = data["tax_type"]
+        tax_rate = data["tax_rate"]
+       
+        p = ArpService(name=sname,hsn_code= hsn,sale_price= price,sale_price_type = tax_type,tax_rate = tax_rate)
+    
+        p.save()
+        return render("arp_items")
+    else:
+        gst = Gst.objects.all()
+    return render(request,"masters/arp_items/service_add.html",{"service":ArpService,"gst":gst})
+
+
+def service_edit(request,id):
+    if request.method == "POST":
+        data = request.POST
+        sname = data["name"]
+        hsn = data["hsn"]
+        price = data["price"]
+        tax_type = data["tax_type"]
+        tax_rate = data["tax_rate"]
+        p = ArpService.objects.get(pk=id)
+
+        p.name = sname
+        p.hsn_code = hsn
+        p.sale_price = price
+        p.sale_price_type = tax_type
+        p.tax_rate = tax_rate
+        p.save()
+        return render("arp_items")
+    else:
+        service = ArpService.objects.get(pk=id)
+        print(service.name)
+        gst = Gst.objects.all()
+    return render(request,"masters/arp_items/service_edit.html",{"service":service,"gst":gst})
+
+
+
+
+
+
+
+def arp_party(request):
+    party = ArpParty.objects.all()
+    return render(request,"masters/arp_party/arp_party.html",{"party":party})
+
+
+def arp_party_add(request):
+    if request.method == "POST":
+        data = request.POST
+        sname = data["name"]
+        phone = data["phone"]
+        address = data["address"]
+        email = data["email"]
+        state = data["state"]
+        date = data["date"]
+        opening_balance = data["opening_balance"]
+        gst_number = data["gst_number"]
+       
+        p = ArpParty(name=sname,phone= phone,address= address,
+        email = email,state = state,date=date,opening_balance=opening_balance,gst_number=gst_number)
+    
+        p.save()
+        return redirect("arp_party")
+    return render(request,"masters/arp_party/arp_party_add.html")
+
+
+def arp_party_edit(request,id):
+    if request.method == "POST":
+        data = request.POST
+        sname = data["name"]
+        phone = data["phone"]
+        address = data["address"]
+        email = data["email"]
+        state = data["state"]
+        date = data["date"]
+        opening_balance = data["opening_balance"]
+        gst_number = data["gst_number"]
+       
+        p = ArpParty.objects.get(pk=id)
+        p.name = sname
+        p.phone = phone
+        p.address = address
+        p.email = email
+        p.state = state
+        p.date = date
+        p.opening_balance = opening_balance
+        p.gst_number = gst_number
+        p.save()
+        return redirect("arp_party")
+    else:
+        party = ArpParty.objects.get(pk=id)
+    return render(request,"masters/arp_party/arp_party_edit.html",{"party":party})
+
+
+
+
+
+
+
+def prp_party(request):
+    party = PrpParty.objects.all()
+    return render(request,"masters/prp_party/prp_party.html",{"party":party})
+
+
+
+
+def prp_party_add(request):
+    if request.method == "POST":
+        data = request.POST
+        sname = data["name"]
+        phone = data["phone"]
+        address = data["address"]
+        email = data["email"]
+        state = data["state"]
+        date = data["date"]
+        opening_balance = data["opening_balance"]
+        gst_number = data["gst_number"]
+       
+        p = PrpParty(name=sname,phone= phone,address= address,
+        email = email,state = state,date=date,opening_balance=opening_balance,gst_number=gst_number)
+    
+        p.save()
+        return redirect("prp_party")
+    return render(request,"masters/prp_party/prp_party_add.html")
+
+
+
+
+def prp_party_edit(request,id):
+    if request.method == "POST":
+        data = request.POST
+        sname = data["name"]
+        phone = data["phone"]
+        address = data["address"]
+        email = data["email"]
+        state = data["state"]
+        date = data["date"]
+        opening_balance = data["opening_balance"]
+        gst_number = data["gst_number"]
+       
+        p = PrpParty.objects.get(pk=id)
+        p.name = sname
+        p.phone = phone
+        p.address = address
+        p.email = email
+        p.state = state
+        p.date = date
+        p.opening_balance = opening_balance
+        p.gst_number = gst_number
+        p.save()
+        return redirect("prp_party")
+    else:
+        party = PrpParty.objects.get(pk=id)
+    return render(request,"masters/prp_party/prp_party_edit.html",{"party":party})
+
+
+
+
+
+# def bank_list(request):
+#     bank_list = BankAccount.objects.all()
+#     return render(request,"masters/bank/bank_list.html",{"bank_list":bank_list})
 
 
 def bank_list(request):
@@ -187,10 +410,100 @@ def bank_add(request):
 
 
 
+
+
+
+
+def item_category(request):
+    category = Category.objects.all()
+    
+    return render(request,"masters/item_category/item_category.html",{"category":category})
+
+
+def item_category_add(request):
+    if request.method == "POST":
+        data = request.POST
+        cname = data['category']
+        b = Category(name=cname)
+        b.save()
+        return redirect("item_category")
+    
+    return render(request,"masters/item_category/item_category_add.html")
+
+
+def item_category_edit(request,id):
+    
+    if request.method == "POST":
+        data = request.POST
+        cname = data["category"]
+        p = Category.objects.get(pk=id)
+        p.name = cname
+        p.save()
+        return redirect("item_category")
+    else:
+        category = Category.objects.get(pk=id)
+    
+    return render(request,"masters/item_category/item_category_edit.html",{"category":category})
+
+
+
+
+def expense_item(request):
+    items = ExpenseItem.objects.all()
+    return render(request,"masters/expense_item/expense_item.html",{"items":items})
+
+
+def expense_item_add(request):
+    if request.method == "POST":
+        data = request.POST
+        iname = data['name']
+        iprice = data['price']
+        b = ExpenseItem(name=iname,price=iprice)
+        b.save()
+        return redirect("expense_item")
+    
+    return render(request,"masters/expense_item/expense_item_add.html")
+
+
+def expense_item_edit(request,id):
+    
+    if request.method == "POST":
+        data = request.POST
+        iname = data['name']
+        iprice = data['price']
+        p = ExpenseItem.objects.get(pk=id)
+        p.name = iname
+        p.price = iprice
+        p.save()
+        return redirect("expense_item")
+    else:
+        item = ExpenseItem.objects.get(pk=id)
+    
+    return render(request,"masters/expense_item/expense_item_edit.html",{"item":item})
+
+
+
+
+
+
 def expense_category(request):
     category = ExpenseCategory.objects.all()
     
     return render(request,"masters/expense_category/expense_category.html",{"category":category})
+
+
+def expense_category_add(request):
+    if request.method == "POST":
+        data = request.POST
+        cname = data['category']
+        etype = data['expense_type']
+        b = ExpenseCategory(name=cname,expenseType=etype)
+        b.save()
+        return redirect("expense_category")
+    else:
+        category = ExpenseCategory()
+
+    return render(request,"masters/expense_category/expense_category_add.html",{"category":category})
 
 
 def expense_category_edit(request,id):

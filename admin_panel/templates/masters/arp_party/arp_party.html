@@ -3,16 +3,16 @@
 {% block content %}  
 
 <div class="page-body">
-<form>
+<form >
    <!-- Container-fluid starts-->
-   <div class="container-fluid">
+   <div class="container-fluid ">
         <div class="card p-3 py-2">
-            <div class="row">
+            <div class="row ">
                 <div class="col-md-6">
-                    <h5 class="mb-0 mt-2">Expense Item</h5>
+                    <h5 class="mb-0 mt-2">ARP Party</h5>
                 </div>
                 <div class="col-md-6">
-                    <a href="{% url 'expense_item_add' %} " class="btn btn-primary rs-text-right">Add</a>
+                    <a href="{% url 'arp_party_add' %} " class="btn btn-primary rs-text-right">Add Party</a>
                 </div>
             </div>
         </div>
@@ -24,19 +24,21 @@
                             <tr>
                                 <th class="rs-w-5"><span  class="hidden-xs">Sl No.</span></th>
                                 <th>name</th>
+                                <th >amount</th>
                                 <th class="rs-text-right">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for item in items %}
+                            {% for p in party %}
                             
                             <tr>
                                 <td class="rs-pr-0">
                                     <span class="badge rounded-pill badge-primary visible-xs">{{ forloop.counter }}</span>
                                     <span class="hidden-xs">{{ forloop.counter }}</span>
                                 </td>
-                                <td>{{ item.name }}</td>
-                                <td class="rs-text-right"><a href="{% url 'expense_item_edit' item.id %}" class="btn btn-primary">edit</a></td>
+                                <td>{{ p.name }}</td>
+                                <td>{{ p.opening_balance }}</td>
+                                <td class="rs-text-right"><a href="{% url 'arp_party_edit' p.id %}" class="btn btn-primary">edit</a></td>
                             </tr>
 
                             {% endfor %}

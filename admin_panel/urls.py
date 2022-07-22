@@ -42,17 +42,43 @@ urlpatterns = [
    
    
     path("arp_items/",views.arp_items,name="arp_items"),
-    path("holiday_add/",views.holiday_add,name="holiday_add"),
+    path("product_add/",views.product_add,name="product_add"),
     path("product_edit/<int:id>",views.product_edit,name="product_edit"),
+
+    path("service_add/",views.service_add,name="service_add"),
+    path("service_edit/<int:id>",views.service_edit,name="service_edit"),
+
+
+
+
+    path("arp_party/",views.arp_party,name="arp_party"),
+    path("arp_party_add/",views.arp_party_add,name="arp_party_add"),
+    path("arp_party_edit/<int:id>",views.arp_party_edit,name="arp_party_edit"),
+
+
+
+    path("prp_party/",views.prp_party,name="prp_party"),
+    path("prp_party_add/",views.prp_party_add,name="prp_party_add"),
+    path("prp_party_edit/<int:id>",views.prp_party_edit,name="prp_party_edit"),
 
 
     path("bank_list/",views.bank_list,name="bank_list"),
     path("bank_add/",views.bank_add,name="bank_add"),
 
 
-    path("expense_category/",views.expense_category,name="expense_category"),
-    path("expense_category_edit/<int:id>",views.expense_category_edit,name="expense_category_edit"),
+    path("item_category/",views.item_category,name="item_category"),
+    path("item_category_add/",views.item_category_add,name="item_category_add"),
+    path("item_category_edit/<int:id>",views.item_category_edit,name="item_category_edit"),
 
+
+    path("expense_item/",views.expense_item,name="expense_item"),
+    path("expense_item_add/",views.expense_item_add,name="expense_item_add"),
+    path("expense_item_edit/<int:id>",views.expense_item_edit,name="expense_item_edit"),
+
+
+    path("expense_category/",views.expense_category,name="expense_category"),
+    path("expense_category_add/",views.expense_category_add,name="expense_category_add"),
+    path("expense_category_edit/<int:id>",views.expense_category_edit,name="expense_category_edit"),
 
 
 

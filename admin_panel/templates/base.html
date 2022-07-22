@@ -147,18 +147,53 @@ body{background:#f8f8f8;}
                                       <span>Holiday</span>
                                      </a>
                                    </li>
-                                   <li>
-                                     <a href="{% url 'bank_list' %} " data-bs-original-title="" class="d-block">
-                                     <img src="{% static 'images/people.png' %} " style="height:20px;margin-right:5px;">
-                                     <span>Bank</span>
-                                    </a>
-                                  </li>
+                                  
                                  <li>
                                    <a href="{% url 'arp_items' %} " data-bs-original-title="" class="d-block">
                                    <img src="{% static 'images/place_order.png' %} " style="height:20px;margin-right:5px;">
                                    <span>ARP Items</span>
                                   </a>
                                 </li> 
+                                 <li>
+                                   <a href="{% url 'arp_items' %} " data-bs-original-title="" class="d-block">
+                                   <img src="{% static 'images/place_order.png' %} " style="height:20px;margin-right:5px;">
+                                   <span>PRP Items</span>
+                                  </a>
+                                </li> 
+                                 <li>
+                                   <a href="{% url 'arp_party' %} " data-bs-original-title="" class="d-block">
+                                   <img src="{% static 'images/place_order.png' %} " style="height:20px;margin-right:5px;">
+                                   <span>ARP Party</span>
+                                  </a>
+                                </li> 
+                                 <li>
+                                   <a href="{% url 'prp_party' %} " data-bs-original-title="" class="d-block">
+                                   <img src="{% static 'images/place_order.png' %} " style="height:20px;margin-right:5px;">
+                                   <span>PRP Party</span>
+                                  </a>
+                                </li> 
+                                <li>
+                                 <a href="{% url 'bank_list' %} " data-bs-original-title="" class="d-block">
+                                 <img src="{% static 'images/people.png' %} " style="height:20px;margin-right:5px;">
+                                 <span>Bank</span>
+                                </a>
+                              </li>
+                                   <li>
+                                     <a href="{% url 'item_category' %}" data-bs-original-title="" class="d-block">
+                                     <img src="{% static 'images/ledger.png' %} " style="height:20px;margin-right:5px;">
+                                     <span>Item Category</span>
+                                    </a>
+                                  </li>
+
+                                   
+
+                                   <li>
+                                     <a href="{% url 'expense_item' %}" data-bs-original-title="" class="d-block">
+                                     <img src="{% static 'images/ledger.png' %} " style="height:20px;margin-right:5px;">
+                                     <span>Expense Item</span>
+                                    </a>
+                                  </li>
+
                                    <li>
                                      <a href="{% url 'expense_category' %}" data-bs-original-title="" class="d-block">
                                      <img src="{% static 'images/ledger.png' %} " style="height:20px;margin-right:5px;">

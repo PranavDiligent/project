@@ -15,7 +15,7 @@
 <div class="page-body">
    <form>
    <div class="container-fluid">
-      <div class="row">
+      <div class="row justify-content-center">
          <div class="col-sm-12 col-md-6">
             <div class="card">
                <div class="card-header px-4 py-3">
@@ -26,7 +26,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Item Name</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text">
+                           <input class="form-control" type="text" name="productname">
                         </div>
                      </div>
                   </div>
@@ -35,13 +35,13 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Category</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                        <select name="category" id="category">
-                         <option value="printer">Printer</option>
-                         <option value="printer & consumables">Printer & Consumables</option>
-                         <option value="service">Service</option>
-                         <option value="system & consumables">System & Consumables</option>
+                        <select name="category" id="category"> 
+                           {% for i in categorys %}  
+                              <option value="{{ i }}">{{ i }}</option>
+                           {% endfor %}
+                           
                      </select>
-                           <input class="form-control" type="text">
+                           
                         </div>
                      </div>
                   </div>
@@ -49,7 +49,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">HSN/SAC</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text">
+                           <input class="form-control" type="text"name="hsn_code" >
                         </div>
                      </div>
                   </div>
@@ -57,7 +57,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Item Code</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text">
+                           <input class="form-control" type="text" name="product_code">
                         </div>
                      </div>
                   </div>
@@ -67,7 +67,7 @@
                      <div class="col-md-8">
                         <div class="input-group">
 
-                           <input class="form-control" type="text">
+                           <input class="form-control" type="text" name="sale_price">
                         </div>
                      </div>
                   </div>
@@ -75,11 +75,13 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Tax Type</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                        <select name="tax type" id="tax type">
-                           <option value="printer">With Tax</option>
-                           <option value="printer & consumables">Without Tax</option>
+                        <select name="sale_tax_type" >
+                           {% for i,j in product.taxTypes %}
+                              <option value="{{ i }}" >{{ j }}</option>
+                           {% endfor %}
+                
                          </select>
-                           <input class="form-control" type="text">
+                         
                         </div>
                      </div>
                   </div>
@@ -87,7 +89,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Purchase Price</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text">
+                           <input class="form-control" type="text" name="purchase_price">
                         </div>
                      </div>
                   </div>
@@ -95,11 +97,13 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Tax Type</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                        <select name="tax type" id="tax type">
-                           <option value="printer">With Tax</option>
-                           <option value="printer & consumables">Without Tax</option>
-                         </select>
-                           <input class="form-control" type="text">
+                           <select name="purchase_taxtype" >
+                              {% for i,j in product.taxTypes %}
+                                 <option value="{{ i }}" >{{ j }}</option>
+                              {% endfor %}
+                   
+                            </select>
+                          
                         </div>
                      </div>
                   </div>
@@ -107,24 +111,14 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Select Tax Rate</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                        <select name="select tax rate" id="select tax rate">
-                              <option value="select">Select</option>
-                              <option value="gst@0%">GST@0%</option>
-                              <option value="igst@0">IGST@0%</option>
-                              <option value="gst@0.25">GST@0.25%</option>
-                              <option value="igst@0.25">IGST@0.25%</option>
-                              <option value="gst@3">GST@3%</option>
-                              <option value="igst@3">IGST@3%</option>
-                              <option value="gst@5">GST@5%</option>
-                              <option value="igst@5">IGST@5%</option>
-                              <option value="gst@12">GST@12%</option>
-                              <option value="igst@12">IGST@12%</option>
-                              <option value="gst@18">GST@18%</option>
-                              <option value="igst@18">GST@18%</option>
-                              <option value="gst@28">GST@28%</option>
-                              <option value="igst@28">GST@28%</option>
+                        <select name="tax_rate" >
+                           {% for i in gst %}
+                              <option value="{{ i.tax_value }}" >{{ i.name }}</option>
+                           {% endfor %}   
+                           
+                              
                         </select>      
-                           <input class="form-control" type="text">
+                          
                         </div>
                      </div>
                   </div>
@@ -132,7 +126,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Opening Stock</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text">
+                           <input class="form-control" type="text" name="opening_stock">
                         </div>
                      </div>
                   </div>
@@ -140,7 +134,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">At Price/Unit</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text">
+                           <input class="form-control" type="text" name="price_per_unit" >
                         </div>
                      </div>
                   </div>
@@ -148,7 +142,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Date</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="date">
+                           <input class="form-control" type="date" name="date" >
                         </div>
                      </div>
                   </div>
@@ -156,7 +150,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Min Stock Qty</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text">
+                           <input class="form-control" type="text" name="minimum_stock_quantity" >
                         </div>
                      </div>
                   </div>
@@ -164,7 +158,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Unit</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text">
+                           <input class="form-control" type="text" name="unit" >
                         </div>
                      </div>
                   </div>
