@@ -72,7 +72,7 @@
                         <select name="tax_rate" id="select tax rate">
                             
                             {% for element in gst %}
-                                <option value="{{ element.tax_value }}"{% if service.tax_rate.id == element.tax_value %}selected{% endif %}>{{ element.name }}</option>
+                                <option value="{{ element.name }}"{% if service.tax_rate.id == element.tax_value %}selected{% endif %}>{{ element.name }}</option>
                             {% endfor %}
                               
                         </select>      

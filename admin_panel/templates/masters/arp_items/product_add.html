@@ -13,7 +13,8 @@
 {% block content %}
 
 <div class="page-body">
-   <form>
+   <form method="post">
+      {% csrf_token %}
    <div class="container-fluid">
       <div class="row justify-content-center">
          <div class="col-sm-12 col-md-6">
@@ -49,7 +50,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">HSN/SAC</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text"name="hsn_code" >
+                           <input class="form-control" type="number"name="hsn_code" >
                         </div>
                      </div>
                   </div>
@@ -67,7 +68,7 @@
                      <div class="col-md-8">
                         <div class="input-group">
 
-                           <input class="form-control" type="text" name="sale_price">
+                           <input class="form-control" type="number" name="sale_price">
                         </div>
                      </div>
                   </div>
@@ -89,7 +90,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Purchase Price</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="purchase_price">
+                           <input class="form-control" type="number" name="purchase_price">
                         </div>
                      </div>
                   </div>
@@ -113,7 +114,7 @@
                         <div class="input-group">
                         <select name="tax_rate" >
                            {% for i in gst %}
-                              <option value="{{ i.tax_value }}" >{{ i.name }}</option>
+                              <option value="{{ i.name }}" >{{ i.name }}</option>
                            {% endfor %}   
                            
                               
@@ -126,7 +127,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Opening Stock</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="opening_stock">
+                           <input class="form-control" type="number" name="opening_stock">
                         </div>
                      </div>
                   </div>
@@ -134,7 +135,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">At Price/Unit</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="price_per_unit" >
+                           <input class="form-control" type="number" name="price_per_unit" >
                         </div>
                      </div>
                   </div>
@@ -150,7 +151,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Min Stock Qty</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="minimum_stock_quantity" >
+                           <input class="form-control" type="number" name="minimum_stock_quantity" >
                         </div>
                      </div>
                   </div>
@@ -158,7 +159,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Unit</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="unit" >
+                           <input class="form-control" type="number" name="unit" >
                         </div>
                      </div>
                   </div>

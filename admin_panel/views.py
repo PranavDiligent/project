@@ -85,6 +85,7 @@ def place_edit(request,id):
 
 
 
+
 def holiday(request):
     holidays = Holiday.objects.all()
     return render(request,"masters/holiday/holiday.html",{"holidays":holidays})
@@ -120,6 +121,7 @@ def holiday_edit(request,id):
 
 
 
+
 def arp_items(request):
     products = ArpProduct.objects.all()
     services = ArpService.objects.all()
@@ -131,9 +133,11 @@ def arp_items(request):
 
 def product_add(request):
     if request.method == "POST":
+        
         data = request.POST
         productname = data["productname"]
         category = data["category"]
+        category = Category.objects.get(name = category)
         hsn_code = data["hsn_code"]
         product_code = data["product_code"]
         sale_price = data["sale_price"]
@@ -141,6 +145,7 @@ def product_add(request):
         purchase_price = data["purchase_price"]
         purchase_price_type = data["purchase_taxtype"]
         tax_rate = data["tax_rate"]
+        tax_rate = Gst.objects.get(name = tax_rate)
         opening_stock = data["opening_stock"]
         price_per_unit = data["price_per_unit"]
         date = data["date"]
@@ -153,9 +158,9 @@ def product_add(request):
         hsn_code = hsn_code,
         product_code = product_code,
         sale_price = sale_price,
-        sale_price_with_tax = sale_price_type,
+        sale_price_type = sale_price_type,
         purchase_price = purchase_price,
-        purchase_price_with_tax = purchase_price_type,
+        purchase_price_type = purchase_price_type,
         tax_rate = tax_rate,
         opening_stock = opening_stock,
         price_per_unit = price_per_unit,
@@ -174,21 +179,20 @@ def product_add(request):
     return render(request,"masters/arp_items/product_add.html",{"product":product,"categorys":categorys,"gst":gst})
 
 
-
-
-
 def product_edit(request,id):
     if request.method == "POST":
         data = request.POST
         productname = data["productname"]
         category = data["category"]
+        category = Category.objects.get(name = category)
         hsn_code = data["hsn_code"]
         product_code = data["product_code"]
         sale_price = data["sale_price"]
-        sale_price_with_tax = data["sale_price_with_tax"]
+        sale_price_with_tax = data["sale_tax_type"]
         purchase_price = data["purchase_price"]
-        purchase_price_with_tax = data["purchase_price_with_tax"]
+        purchase_price_with_tax = data["purchase_taxtype"]
         tax_rate = data["tax_rate"]
+        tax_rate = Gst.objects.get(name = tax_rate)
         opening_stock = data["opening_stock"]
         price_per_unit = data["price_per_unit"]
         date = data["date"]
@@ -201,9 +205,9 @@ def product_edit(request,id):
         p.hsn_code = hsn_code
         p.product_code = product_code
         p.sale_price = sale_price
-        p.sale_price_with_tax = sale_price_with_tax
+        p.sale_price_type = sale_price_with_tax
         p.purchase_price = purchase_price
-        p.purchase_price_with_tax = purchase_price_with_tax
+        p.purchase_price_type = purchase_price_with_tax
         p.tax_rate = tax_rate
         p.opening_stock = opening_stock
         p.price_per_unit = price_per_unit
@@ -216,8 +220,8 @@ def product_edit(request,id):
         product = ArpProduct.objects.get(pk=id)
         categorys = Category.objects.all()
         gst = Gst.objects.all()
+        print(product.tax_rate)
     return render(request,"masters/arp_items/product_edit.html",{"product":product,"categorys":categorys,"gst":gst})
-
 
 
 
@@ -229,11 +233,12 @@ def service_add(request):
         price = data["price"]
         tax_type = data["tax_type"]
         tax_rate = data["tax_rate"]
+        tax_rate = Gst.objects.get(name = tax_rate)
        
         p = ArpService(name=sname,hsn_code= hsn,sale_price= price,sale_price_type = tax_type,tax_rate = tax_rate)
     
         p.save()
-        return render("arp_items")
+        return redirect("arp_items")
     else:
         gst = Gst.objects.all()
     return render(request,"masters/arp_items/service_add.html",{"service":ArpService,"gst":gst})
@@ -247,6 +252,7 @@ def service_edit(request,id):
         price = data["price"]
         tax_type = data["tax_type"]
         tax_rate = data["tax_rate"]
+        tax_rate = Gst.objects.get(name = tax_rate)
         p = ArpService.objects.get(pk=id)
 
         p.name = sname
@@ -255,13 +261,41 @@ def service_edit(request,id):
         p.sale_price_type = tax_type
         p.tax_rate = tax_rate
         p.save()
-        return render("arp_items")
+        return redirect("arp_items")
     else:
         service = ArpService.objects.get(pk=id)
         print(service.name)
         gst = Gst.objects.all()
     return render(request,"masters/arp_items/service_edit.html",{"service":service,"gst":gst})
 
+
+
+
+
+
+
+def prp_items(request):
+    # products = PrpProduct.objects.all()
+    services = PrpService.objects.all()
+    return render(request,"masters/prp_items/prp_items.html",{"services":services})
+
+
+
+
+
+def prp_service_add(request):
+    if request.method == "POST":
+        data = request.POST
+        sname = data["name"]
+        hsn = data["hsn"]
+        service_code = data["service_code"]
+        price = data["price"]
+        p = PrpService(name=sname,hsn_code= hsn,service_code = service_code,service_price = price)
+    
+        p.save()
+        return redirect("arp_items")
+    
+    return render(request,"masters/arp_items/prp_service_add.html")
 
 
 
@@ -331,8 +365,6 @@ def prp_party(request):
     return render(request,"masters/prp_party/prp_party.html",{"party":party})
 
 
-
-
 def prp_party_add(request):
     if request.method == "POST":
         data = request.POST
@@ -351,8 +383,6 @@ def prp_party_add(request):
         p.save()
         return redirect("prp_party")
     return render(request,"masters/prp_party/prp_party_add.html")
-
-
 
 
 def prp_party_edit(request,id):
@@ -386,9 +416,6 @@ def prp_party_edit(request,id):
 
 
 
-# def bank_list(request):
-#     bank_list = BankAccount.objects.all()
-#     return render(request,"masters/bank/bank_list.html",{"bank_list":bank_list})
 
 
 def bank_list(request):
@@ -444,6 +471,8 @@ def item_category_edit(request,id):
         category = Category.objects.get(pk=id)
     
     return render(request,"masters/item_category/item_category_edit.html",{"category":category})
+
+
 
 
 
@@ -521,9 +550,6 @@ def expense_category_edit(request,id):
         category = ExpenseCategory.objects.get(pk=id)
     
     return render(request,"masters/expense_category/expense_category_edit.html",{"category":category})
-
-
-
 
 
 

@@ -49,6 +49,10 @@ urlpatterns = [
     path("service_edit/<int:id>",views.service_edit,name="service_edit"),
 
 
+    path("prp_service_add/",views.prp_service_add,name="prp_service_add"),
+    # path("arp_service_edit/<int:id>",views.arp_service_edit,name="arp_service_edit"),
+
+
 
 
     path("arp_party/",views.arp_party,name="arp_party"),

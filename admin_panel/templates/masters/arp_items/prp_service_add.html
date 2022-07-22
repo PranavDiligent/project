@@ -42,7 +42,18 @@
                   </div>
                
                   <div class="mb-2 row">
-                     <label class="col-md-4 col-form-label rs-pb-0">Sale Price</label>
+                     <label class="col-md-4 col-form-label rs-pb-0">Service code</label>
+
+                     <div class="col-md-8">
+                        <div class="input-group">
+
+                           <input class="form-control" type="text" name="service_code" >
+                        </div>
+                     </div>
+                  </div>
+               
+                  <div class="mb-2 row">
+                     <label class="col-md-4 col-form-label rs-pb-0">Service Price</label>
 
                      <div class="col-md-8">
                         <div class="input-group">
@@ -51,37 +62,8 @@
                         </div>
                      </div>
                   </div>
-                  <div class="mb-2 row">
-                     <label class="col-md-4 col-form-label rs-pb-0">Tax Type</label>
-                     <div class="col-md-8">
-                        <div class="input-group">
-                        <select name="tax_type" >
-                            {% for i,j in service.taxTypes %}   
-                                <option value="{{ i }}">{{ j }}</option>
-                            {% endfor %}
-                           
-                           
-                         </select>
-                           
-                            
-                        </div>
-                     </div>
-                  </div>
-                  <div class="mb-2 row">
-                     <label class="col-md-4 col-form-label rs-pb-0">Select Tax Rate</label>
-                     <div class="col-md-8">
-                        <div class="input-group">
-                        <select name="tax_rate" id="select tax rate">
-                            
-                            {% for element in gst %}
-                                <option value="{{ element.name }}">{{ element.name }}</option>
-                            {% endfor %}
-                              
-                        </select>      
-                        
-                        </div>
-                     </div>
-                  </div>
+                  
+                  
                </div>
             </div>
          </div>

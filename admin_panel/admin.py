@@ -3,5 +3,5 @@ from .models import *
 # Register your models here.
 
 myModels = [Designation,Place,Gst,Holiday,Category,BankAccount,ArpParty,PrpParty,
-ExpenseItem,ExpenseCategory,ArpProduct,ArpService]
+ExpenseItem,ExpenseCategory,ArpProduct,ArpService,PrpService]
 admin.site.register(myModels)

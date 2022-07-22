@@ -96,7 +96,7 @@ class PrpService(models.Model):
     name = models.CharField(max_length=100)
     hsn_code = models.CharField(max_length=100)
     service_code = models.CharField( max_length=50)
-    service_price = models.CharField(max_length=100)
+    service_price = models.IntegerField()
     
     def __str__(self):
         return self.name
