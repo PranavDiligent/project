@@ -27,7 +27,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Service Name</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="name" >
+                           <input class="form-control" type="text" name="name" required required minlength="2" maxlength="30">
                         </div>
                      </div>
                   </div>
@@ -36,7 +36,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">HSN/SAC</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="hsn" >
+                           <input class="form-control" type="text" name="hsn"  required>
                         </div>
                      </div>
                   </div>
@@ -47,7 +47,7 @@
                      <div class="col-md-8">
                         <div class="input-group">
 
-                           <input class="form-control" type="number" name="price" >
+                           <input class="form-control" type="number" name="price" required>
                         </div>
                      </div>
                   </div>
@@ -73,8 +73,8 @@
                         <div class="input-group">
                         <select name="tax_rate" id="select tax rate">
                             
-                            {% for element in gst %}
-                                <option value="{{ element.name }}">{{ element.name }}</option>
+                            {% for i,j in gst %}
+                                <option value="{{ i }}">{{ j }}</option>
                             {% endfor %}
                               
                         </select>      

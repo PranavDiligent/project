@@ -1,4 +1,6 @@
+from time import strptime
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 
@@ -18,10 +20,24 @@ class Place(models.Model):
         return self.name
 
 
+class Accounting_year(models.Model):
+
+    
+    year = models.CharField( max_length=50,unique=True)
+    # fromdate = models.DateField(auto_now=False, auto_now_add=False)
+    # date = models.DateField(auto_now=False, auto_now_add=False)
+    fromdate = models.CharField(max_length=20,default="April,1")
+    todate = models.CharField(max_length=20,default="March,31")
+
+    def __str__(self):
+        return self.year
+
+    
 
 class Holiday(models.Model):
 
-    holiday_date = models.DateField(auto_now=False, auto_now_add=False)
+    accounting_year = models.ForeignKey("Accounting_year", on_delete=models.CASCADE)
+    holiday_date = models.DateField(auto_now=False, auto_now_add=False,unique=True)
     reason = models.CharField(max_length=100)
 
     def __str__(self):
@@ -36,18 +52,32 @@ class Category(models.Model):
         return self.name
 
 
-class Gst(models.Model):
+# class Gst(models.Model):
 
-    name = models.CharField( max_length=50)
-    tax_value = models.DecimalField( max_digits=5, decimal_places=2)
+#     name = models.CharField( max_length=50)
+#     tax_value = models.DecimalField( max_digits=5, decimal_places=2)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
+
+gstStatic = (
+    ('0.25','GST@0.25%'),
+    ('0.25','IGST@0.25%'),
+    ('3.0','GST@3%'),
+    ('3.0','IGST@3%'),
+    ('5.0','GST@5%'),
+    ('5.0','IGST@5%'),
+    ('12.0','GST@12%'),
+    ('18.0','GST@18%'),
+    ('18.0','IGST@18%'),
+    ('28.0','GST@28%'),
+    ('28.0','IGST@28%'),
+    ('12.0','IGST@12%'),
+    ('0.0','IGST@0%'),
+)
 
 
-
-
-class ArpProduct(models.Model):
+class Product(models.Model):
 
     taxTypes = (
         ('withTax','with Tax'),
@@ -62,7 +92,8 @@ class ArpProduct(models.Model):
     sale_price_type = models.CharField(choices=taxTypes ,max_length=50)
     purchase_price = models.CharField(max_length=100)
     purchase_price_type = models.CharField(choices=taxTypes ,max_length=50)
-    tax_rate = models.ForeignKey("Gst", on_delete=models.CASCADE)
+    purchase_price_tax_rate = models.CharField(choices=gstStatic,max_length=20,null=True,blank=True)
+    sale_price_tax_rate = models.CharField(choices=gstStatic,max_length=20,null=True,blank=True)
     opening_stock = models.CharField(max_length=100)
     price_per_unit = models.CharField(max_length=100)
     date = models.DateField(auto_now=False, auto_now_add=False)
@@ -73,7 +104,7 @@ class ArpProduct(models.Model):
         return self.name
 
 
-class ArpService(models.Model):
+class Service(models.Model):
     taxTypes = (
             ('withTax','with Tax'),
             ('withoutTax','without Tax'),
@@ -82,7 +113,7 @@ class ArpService(models.Model):
     hsn_code = models.CharField(max_length=100)
     sale_price = models.CharField(max_length=100)
     sale_price_type = models.CharField( choices=taxTypes,max_length=50)
-    tax_rate = models.ForeignKey("Gst", on_delete=models.CASCADE)
+    tax_rate = models.CharField(choices=gstStatic,max_length=20)
 
     def __str__(self):
         return self.name
@@ -103,7 +134,7 @@ class PrpService(models.Model):
 
 
 
-class ArpParty(models.Model):
+class Party(models.Model):
 
     name = models.CharField( max_length=100)
     phone = models.CharField( max_length=100)

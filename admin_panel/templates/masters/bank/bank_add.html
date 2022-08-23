@@ -30,7 +30,7 @@
                         <label class="col-md-4 col-form-label rs-pb-0">Account Display Name</label>
                         <div class="col-md-8">
                            <div class="input-group">
-                              <input class="form-control" type="text" name="name">
+                              <input class="form-control" type="text" name="name" required minlength="2" maxlength="30">
                            </div>
                         </div>
                      </div>
@@ -39,7 +39,7 @@
                         <label class="col-md-4 col-form-label rs-pb-0">Opening Balance</label>
                         <div class="col-md-8">
                            <div class="input-group">
-                              <input class="form-control" type="text" name="balance">
+                              <input class="form-control" type="text" name="balance" oninput="numbersonly(this)"  required maxlength="10">
                            </div>
                         </div>
                      </div>
@@ -47,7 +47,7 @@
                         <label class="col-md-4 col-form-label rs-pb-0">As On</label>
                         <div class="col-md-8">
                            <div class="input-group">
-                              <input class="form-control" type="date" name="date">
+                              <input class="form-control" type="date" id="date" name="date" required >
                            </div>
                         </div>
                      
@@ -70,3 +70,27 @@
 
 
 {% endblock content %}
+
+
+
+{% block script %}
+
+<script>
+    $(function(){
+    var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var maxDate = year + '-' + month + '-' + day;
+    $('#date').attr('max', maxDate);
+});
+</script>
+
+{% endblock script %}

@@ -18,9 +18,9 @@
                             {% csrf_token %}
                             <div class="info mt-5 text-start">
                                 <div class="mb-2 row">
-                                    <label class="rs-pb-0 col-md-4 col-12 col-form-label">Place</label>
+                                    <label class="rs-pb-0 col-md-4 col-12 col-form-label">Place of Work</label>
                                     <div class="col-md-8 col-12">
-                                        <input type="text" name="placename" class="form-control" value="{{ place.name }}">
+                                        <input type="text"  minlength="2" maxlength="30" required name="placename" class="form-control" value="{{ place.name }}">
                                     </div>
                                 </div>
     

@@ -23,13 +23,13 @@
                                 <div class="mb-2 row">
                                     <label class="rs-pb-0 col-md-4 col-12 col-form-label">name</label>
                                     <div class="col-md-8 col-12">
-                                        <input type="text" name="name" class="form-control" value="{{ item.name }} ">
+                                        <input type="text" name="name" class="form-control" value="{{ item.name }}" required minlength="2" maxlength="30">
                                     </div>
                                 </div>
                                 <div class="mb-2 row">
                                     <label class="rs-pb-0 col-md-4 col-12 col-form-label">price</label>
                                     <div class="col-md-8 col-12">
-                                        <input type="text" name="price" class="form-control" value="{{ item.price }} ">
+                                        <input type="text" name="price" class="form-control" value="{{ item.price }} " required>
                                     </div>
                                 </div>
     

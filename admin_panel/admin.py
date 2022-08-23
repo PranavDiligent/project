@@ -2,6 +2,6 @@ from django.contrib import admin
 from .models import *
 # Register your models here.
 
-myModels = [Designation,Place,Gst,Holiday,Category,BankAccount,ArpParty,PrpParty,
-ExpenseItem,ExpenseCategory,ArpProduct,ArpService,PrpService]
+myModels = [Designation,Place,Holiday,Category,BankAccount,Party,PrpParty,
+ExpenseItem,ExpenseCategory,Product,Service,PrpService,Accounting_year]
 admin.site.register(myModels)

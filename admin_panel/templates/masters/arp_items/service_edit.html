@@ -20,14 +20,14 @@
          <div class="col-sm-12 col-md-6">
             <div class="card">
                <div class="card-header px-4 py-3">
-                  <h5>Add Service</h5>
+                  <h5>Edit Service</h5>
                </div>
                <div class="card-body p-4 rs-py-10">
                   <div class="mb-2 row">
                      <label class="col-md-4 col-form-label rs-pb-0">Service Name</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="name" value="{{ service.name }}">
+                           <input class="form-control" type="text" name="name" value="{{ service.name }}" required minlength="2" maxlength="30">
                         </div>
                      </div>
                   </div>
@@ -36,7 +36,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">HSN/SAC</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="hsn" value="{{ service.hsn_code }}">
+                           <input class="form-control" type="text" name="hsn" value="{{ service.hsn_code }}" required>
                         </div>
                      </div>
                   </div>
@@ -47,7 +47,7 @@
                      <div class="col-md-8">
                         <div class="input-group">
 
-                           <input class="form-control" type="number" name="price" value="{{ service.sale_price }}">
+                           <input class="form-control" type="number" name="price" value="{{ service.sale_price }}" required>
                         </div>
                      </div>
                   </div>
@@ -71,8 +71,8 @@
                         <div class="input-group">
                         <select name="tax_rate" id="select tax rate">
                             
-                            {% for element in gst %}
-                                <option value="{{ element.name }}"{% if service.tax_rate.id == element.tax_value %}selected{% endif %}>{{ element.name }}</option>
+                            {% for i,j in gst %}
+                                <option value="{{ i }}"{% if service.tax_rate.id == i %}selected{% endif %}>{{ j }}</option>
                             {% endfor %}
                               
                         </select>      

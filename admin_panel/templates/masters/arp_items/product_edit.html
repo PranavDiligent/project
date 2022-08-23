@@ -20,14 +20,15 @@
          <div class="col-sm-12 col-md-6">
             <div class="card">
                <div class="card-header px-4 py-3">
-                  <h5>Add Product</h5>
+                  <h5>
+                     Edit Product</h5>
                </div>
                <div class="card-body p-4 rs-py-10">
                   <div class="mb-2 row">
                      <label class="col-md-4 col-form-label rs-pb-0">Item Name</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="productname" value="{{ product.name }}">
+                           <input class="form-control" type="text" name="productname" value="{{ product.name }}" required>
                         </div>
                      </div>
                   </div>
@@ -50,7 +51,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">HSN/SAC</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text"  name="hsn_code" value="{{ product.hsn_code }}">
+                           <input class="form-control" type="text"  name="hsn_code" value="{{ product.hsn_code }}" required>
                         </div>
                      </div>
                   </div>
@@ -58,7 +59,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Item Code</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="product_code" value="{{ product.product_code }}">
+                           <input class="form-control" type="text" name="product_code" value="{{ product.product_code }}" required>
                         </div>
                      </div>
                   </div>
@@ -68,7 +69,7 @@
                      <div class="col-md-8">
                         <div class="input-group">
 
-                           <input class="form-control" type="text" name="sale_price" value="{{ product.sale_price }}">
+                           <input class="form-control" type="text" name="sale_price" value="{{ product.sale_price }}" required>
                         </div>
                      </div>
                   </div>
@@ -76,7 +77,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Tax Type</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                        <select name="sale_tax_type" >
+                        <select name="sale_tax_type" id="sale_tax_type" >
                            {% for i,j in product.taxTypes %}
                               <option value="{{ i }}" {% if i == product.sale_price_type %}selected{% endif %}>{{ j }}</option>
                            {% endfor %}
@@ -87,10 +88,24 @@
                      </div>
                   </div>
                   <div class="mb-2 row">
+                     <label class="col-md-4 col-form-label rs-pb-0">Select Sale Price Tax Rate</label>
+                     <div class="col-md-8">
+                        <div class="input-group">
+                        <select name="sale_tax_rate" id="sale_tax_rate" >
+                           {% for i,j in gst %}
+                              <option value="{{ i }}" {% if product.sale_price_tax_rate == i %}selected{% endif %}>{{ j }}</option>
+                           {% endfor %}   
+                           
+                              
+                        </select>      
+                          
+                        </div>
+                     </div>
+                  <div class="mb-2 row">
                      <label class="col-md-4 col-form-label rs-pb-0">Purchase Price</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="purchase_price" value="{{ product.purchase_price }}">
+                           <input class="form-control" type="text" name="purchase_price" value="{{ product.purchase_price }}" required>
                         </div>
                      </div>
                   </div>
@@ -98,7 +113,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Tax Type</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <select name="purchase_taxtype" >
+                           <select name="purchase_taxtype" id="purchase_taxtype" >
                               {% for i,j in product.taxTypes %}
                                  <option value="{{ i }}" {% if i == product.purchase_price_type %}selected{% endif %}>{{ j }}</option>
                               {% endfor %}
@@ -109,12 +124,12 @@
                      </div>
                   </div>
                   <div class="mb-2 row">
-                     <label class="col-md-4 col-form-label rs-pb-0">Select Tax Rate</label>
+                     <label class="col-md-4 col-form-label rs-pb-0">Select Purchase Price Tax Rate</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                        <select name="tax_rate" >
-                           {% for i in gst %}
-                              <option value="{{ i.name }}" {% if product.tax_rate == i.name %}selected{% endif %}>{{ i.name }}</option>
+                        <select name="purchase_tax_rate" id="purchase_tax_rate" >
+                           {% for i,j in gst %}
+                              <option value="{{ i }}" {% if product.purchase_price_tax_rate == i %}selected{% endif %}>{{ j }}</option>
                            {% endfor %}   
                            
                               
@@ -127,7 +142,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Opening Stock</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="opening_stock" value="{{ product.opening_stock }}">
+                           <input class="form-control" type="text" name="opening_stock" value="{{ product.opening_stock }}" required>
                         </div>
                      </div>
                   </div>
@@ -135,7 +150,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">At Price/Unit</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="price_per_unit" value="{{ product.price_per_unit }}">
+                           <input class="form-control" type="text" name="price_per_unit" value="{{ product.price_per_unit }}" required>
                         </div>
                      </div>
                   </div>
@@ -143,7 +158,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Date</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="date" name="date" value="{{ product.date|date:"Y-m-d" }}">
+                           <input class="form-control" type="date"  id= "date" name="date" value="{{ product.date|date:"Y-m-d" }}" required>
                         </div>
                      </div>
                   </div>
@@ -151,7 +166,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Min Stock Qty</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name="minimum_stock_quantity" value="{{ product.minimum_stock_quantity }}">
+                           <input class="form-control" type="text" name="minimum_stock_quantity" value="{{ product.minimum_stock_quantity }}" required>
                         </div>
                      </div>
                   </div>
@@ -159,7 +174,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Unit</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                           <input class="form-control" type="text" name = "unit"value="{{ product.unit }}">
+                           <input class="form-control" type="text" name = "unit"value="{{ product.unit }}" required>
                         </div>
                      </div>
                   </div>
@@ -182,3 +197,66 @@
 
 
 {% endblock content %}
+
+
+
+
+{% block script %}
+
+<script>
+    $(function(){
+    var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var maxDate = year + '-' + month + '-' + day;
+    $('#date').attr('max', maxDate);
+});
+</script>
+<script>
+$(function(){
+    if ($("#purchase_taxtype").val() == 'withoutTax'){
+        document.getElementById("purchase_tax_rate").style.display = "none";
+        $("#purchase_taxtype").val() = "";
+    }
+});
+$(function(){
+    if ($("#sale_tax_type").val() == 'withoutTax'){
+        document.getElementById("sale_tax_rate").style.display = "none";
+        $("#sale_tax_type").val() = "";
+    }
+});
+
+$(function() {
+            $("#purchase_taxtype").change(function() {
+                if ($(this).val() == "withoutTax") {
+                    document.getElementById("purchase_tax_rate").style.display = "none";
+                    $("#purchase_tax_rate")[0].selectedIndex = 12;
+                }
+                else
+                    document.getElementById("purchase_tax_rate").style.display = "block";
+            });
+        });
+        
+
+
+$(function() {
+            $("#sale_tax_type").change(function() {
+                if ($(this).val() == "withoutTax") {
+                    document.getElementById("sale_tax_rate").style.display = "none";
+                    $("#sale_tax_rate")[0].selectedIndex = 12;
+                }
+                else
+                    document.getElementById("sale_tax_rate").style.display = "block";
+            });
+        });
+</script>
+
+{% endblock script %}
