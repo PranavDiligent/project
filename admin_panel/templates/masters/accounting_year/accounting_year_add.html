@@ -22,7 +22,7 @@
                                 <div class="mb-2 row">
                                     <label class="rs-pb-0 col-md-4 col-12 col-form-label">Accounting year</label>
                                     <div class="col-md-8 col-12">
-                                        <input type="text"  placeholder="20XX-20XX" minlength="2" maxlength="30" name="placename" class="form-control" required>
+                                        <input type="text"  placeholder="20XX" oninput="numbersonly(this)" pattern="[2]{1}[0]{1}[0-9]{2}" minlength="4" maxlength="4" id = "year" name="year" class="form-control" required>
                                     </div>
                                 </div>
                                 {% comment %} <div class="mb-2 row">
@@ -41,7 +41,7 @@
     
                                 <div class="card-footer text-end pt-2 p-0 mt-2">
                                     <div class="col-sm-9 offset-sm-3">
-                                        <button class="btn btn-primary" type="submit" data-bs-original-title=""
+                                        <button class="btn btn-primary" id="submit"  type="submit" data-bs-original-title=""
                                             title="">ADD</button>
     
                                     </div>
@@ -58,3 +58,17 @@
 </div>
 
 {% endblock content %}
+{% block script %}
+<script>
+    // $(function () {
+    //     $("#year").change(function(){
+    //         year = $("#year").val();
+    //         year1 = year.slice(0,4);
+    //         year2 = year.slice(5,);
+            
+            
+    //     });
+       
+    // });
+</script>
+{% endblock script %}

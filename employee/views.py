@@ -81,80 +81,6 @@ def create_emp(request):
     
     
     
-        # if request.method == "POST":
-        #     Empform = EmpForm(request.POST, request.FILES)
-        #     smobile = request.POST['mobile']
-        #     empname = request.POST['name']
-        #     empemail = request.POST['email']
-        #     if Empform.is_valid():
-                
-        #         Empform.save()
-                
-        #         if Emp.objects.get(name = empname):
-        #             emp = Emp.objects.get(name = empname)
-        #             if emp.emp_type == "leader":
-        #                 lead = Leaders(leadername = emp.name,leaderid=emp.id)
-        #                 lead.save()
-        #             else:
-        #                 return HttpResponse(f"{empname}-emp is not leader")
-        #         else:
-        #             return HttpResponse(f"{empname}-emp not exists")
-                
-        #         # creating user and pass for emp with random passsof alphanum
-        #         password = ''.join(random.choices(string.ascii_uppercase+string.digits,k=6))
-        #         with open("emp_pass.txt", "a") as f:
-        #             f.write(f"{empname} ::::::: {password}")
-        #         myuser = User.objects.create_user(username=smobile,password=password)
-        #         myuser.first_name = empname
-        #         myuser.email = empemail
-        #         myuser.save()
-        #         print("saved")
-        #         return redirect("show_emp")
-        #     else:
-        #         return HttpResponse("Emp creation failed")
-        # else:
-        #     Empform = EmpForm()
-        # return render(request,"emp_crud/create_emp.html",{"Empform":Empform})
-    
-    
-    
-    
-    
-    # if request.method == "POST":
-    #     Empform = EmpForm(request.POST, request.FILES)
-    #     if Empform.is_valid():
-            
-    #         empname = Empform.cleaned_data['name']
-    #         smobile = Empform.cleaned_data['mobile']
-    #         empemail = Empform.cleaned_data['email']
-
-    #         Empform.save()
-
-    #         if Emp.objects.get(name = empname):
-    #             emp = Emp.objects.get(name = empname)
-    #             if emp.emp_type == "leader":
-    #                 lead = Leaders(leadername = emp.name,leaderid=emp.id)
-    #                 lead.save()
-    #             else:
-    #                 return HttpResponse(f"{empname}-emp is not leader")
-    #         else:
-    #             return HttpResponse(f"{empname}-emp not exists")
-    #         # creating user and pass for emp with random passsof alphanum
-    #         password = ''.join(random.choices(string.ascii_uppercase+string.digits,k=6))
-    #         with open("emp_pass.txt", "a") as f:
-    #             f.write(f"{empname} ::::::: {password}")
-    #         myuser = User.objects.create_user(username=smobile,password=password)
-    #         myuser.first_name = empname
-    #         myuser.email = empemail
-    #         myuser.save()
-    #         print("saved")
-    #         return redirect("show_emp")
-
-    # else:
-    #     Empform = EmpForm()
-    # return render(request,"emp_crud/create_emp.html",{"Empform":Empform})
-    
-
 
 
 def show_emp(request):
@@ -189,27 +115,35 @@ def update_emp(request,id):
                     print(f"Employee {empid} has been updated successfully".upper())
                     print(f"checking if Employee {empid} is leader or not".upper())
 
-                    if emp_type == "employee" and Leaders.objects.filter(leaderid=id).exists():
+                    if emp_type == "employee" and Leaders.objects.filter(leaderid=id).exists(): #if user tries to be an normal employee
                         print(f"Got normal employee request for {empid}".upper())
-                        obj = Leaders.objects.get(leaderid = id)
+                        lobj = Leaders.objects.get(leaderid = id)
                         print(f"changing permission rights!".upper())
-                        obj.delete()
+                        lobj.delete()
                         print("Removed From leaders grup".upper())
                     elif emp_type == "leader":
                         if not Leaders.objects.filter(leaderid=id).exists():
                             print(f"Got leader employee request for {empid}".upper())
+
                             obj = Emp.objects.get(id =id)
+                            print(f"changing permission rights!".upper())
+                            lobj = Leaders(leadername=empid,leaderid=empid.id)
+                            lobj.save()
+                            print(f"Added {empid} to leaders!!".upper())
                             obj.under_of_id = None
                             obj.save()
                             print(f"{empid} is leader now".upper())
+                    print(f"{empid} having no team Leader".upper())
                     user.username = empid.mobile
                     user.first_name = empid.name
                     user.save()
+                    print("user saved Successfully".upper())
                     
                     return redirect("show_emp")
                 else:
                     return HttpResponse("User doesnt exists!")
-
+            else:
+                return HttpResponse(f"<body>{Empform.errors}</body>")
 
         return render(request,"emp_crud/update_emp.html",{"Empform":Empform})
     else:

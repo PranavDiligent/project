@@ -144,10 +144,9 @@ def accounting_year_add(request):
     if request.user.is_staff:
         if request.method == "POST":
             data = request.POST
-            place_name = data["placename"]
-            # fromdate = data["fromdate"]
-            # todate = data["todate"]
-            # p = Place.objects.get(name=place_name)
+            place_name = data["year"]
+            place_name = place_name+"-"+str(int(place_name)+1) # format for year ------ intputdata-(inputdata+1)
+            
             if not Accounting_year.objects.filter(year=place_name).exists():
                 p = Accounting_year(year=place_name,
                 # fromdate = fromdate,
