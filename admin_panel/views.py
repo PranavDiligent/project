@@ -201,8 +201,16 @@ def holiday(request):
     
     if request.user.is_staff:
         holidays = Holiday.objects.all()
-       
-        return render(request,"masters/holiday/holiday.html",{"holidays":holidays,})
+        years = Accounting_year.objects.all()
+        if request.method == "POST":
+            print("got post request from holiday for searching")
+            year = request.POST["year"]
+            years = Accounting_year.objects.all()
+            holidays = Holiday.objects.filter(accounting_year_id=year)
+            print(holidays)
+        
+        
+        return render(request,"masters/holiday/holiday.html",{"holidays":holidays,"years":years})
     else:
         return redirect("login")
 
@@ -263,18 +271,25 @@ def holiday_delete(request,id):
 
 
 
-def arp_items(request):
+# def arp_items(request):
     
+#     if request.user.is_staff:
+#         products = Product.objects.all()
+#         services = Service.objects.all()
+#         return render(request,"masters/arp_items/arp_items.html",{"products":products,"services":services})
+#     else:
+#         return redirect("login")
+
+
+
+def products(request):
     if request.user.is_staff:
-        products = Product.objects.all()
-        services = Service.objects.all()
-        return render(request,"masters/arp_items/arp_items.html",{"products":products,"services":services})
+        products = Product.objects.all().order_by("-id")
+        # services = Service.objects.all()
+        return render(request,"masters/arp_items/products.html",{"products":products})
     else:
         return redirect("login")
-
-
-
-
+    
 
 def product_add(request):
     
@@ -319,7 +334,7 @@ def product_add(request):
             
         
             p.save()
-            return redirect("arp_items")
+            return redirect("products")
         else:
             product = Product
             categorys = Category.objects.all()
@@ -368,7 +383,7 @@ def product_edit(request,id):
             p.minimum_stock_quantity = minimum_stock_quantity
             p.unit = unit
             p.save()
-            return redirect("arp_items")
+            return redirect("products")
         else:
             product = Product.objects.get(pk=id)
             categorys = Category.objects.all()
@@ -384,7 +399,7 @@ def product_delete(request,id):
     if request.user.is_staff:
         des = Product.objects.get(pk=id)
         des.delete()
-        return redirect("arp_items")
+        return redirect("products")
     else:
         return redirect("login")
 
@@ -392,6 +407,14 @@ def product_delete(request,id):
 
 
 
+
+def services(request):
+    if request.user.is_staff:
+        # products = Product.objects.all()
+        services = Service.objects.all().order_by("-id")
+        return render(request,"masters/arp_items/services.html",{"services":services})
+    else:
+        return redirect("login")
 
 
 
@@ -410,7 +433,7 @@ def service_add(request):
             p = Service(name=sname,hsn_code= hsn,sale_price= price,sale_price_type = tax_type,tax_rate = tax_rate)
         
             p.save()
-            return redirect("arp_items")
+            return redirect("services")
         else:
             gst = gstStatic
         return render(request,"masters/arp_items/service_add.html",{"service":Service,"gst":gst})
@@ -437,7 +460,7 @@ def service_edit(request,id):
             p.sale_price_type = tax_type
             p.tax_rate = tax_rate
             p.save()
-            return redirect("arp_items")
+            return redirect("services")
         else:
             service = Service.objects.get(pk=id)
             print(service.name)
@@ -452,7 +475,7 @@ def service_delete(request,id):
     if request.user.is_staff:
         des = Service.objects.get(pk=id)
         des.delete()
-        return redirect("arp_items")
+        return redirect("services")
     else:
         return redirect("login")
 
@@ -475,23 +498,23 @@ def prp_items(request):
 
 
 
-def prp_service_add(request):
+# def prp_service_add(request):
    
-    if request.user.is_staff:
-        if request.method == "POST":
-            data = request.POST
-            sname = data["name"]
-            hsn = data["hsn"]
-            service_code = data["service_code"]
-            price = data["price"]
-            p = PrpService(name=sname,hsn_code= hsn,service_code = service_code,service_price = price)
+#     if request.user.is_staff:
+#         if request.method == "POST":
+#             data = request.POST
+#             sname = data["name"]
+#             hsn = data["hsn"]
+#             service_code = data["service_code"]
+#             price = data["price"]
+#             p = PrpService(name=sname,hsn_code= hsn,service_code = service_code,service_price = price)
         
-            p.save()
-            return redirect("arp_items")
+#             p.save()
+#             return redirect("arp_items")
         
-        return render(request,"masters/arp_items/prp_service_add.html")
-    else:
-        return redirect("login")
+#         return render(request,"masters/arp_items/prp_service_add.html")
+#     else:
+#         return redirect("login")
 
 
 

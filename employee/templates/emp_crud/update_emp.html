@@ -397,5 +397,24 @@
 
     document.getElementById("id_name").setAttribute("required",true)
 </script>
+<script>
+    $(function() {
+            $("#id_emp_type").change(function() {
+                if ($(this).val() == "leader") {
+                    document.getElementById("id_under_of").style.display = "none";
+                    document.getElementById("id_under_of").value = "";
+                }
+                else
+                    document.getElementById("id_under_of").style.display = "block";
+            });
+        });
+
+    
+$(function(){
+    if($("#id_emp_type").val() == "leader"){
+        document.getElementById("id_under_of").value = "";
+}
+});
+</script>
 
 {% endblock script %}

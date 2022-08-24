@@ -63,10 +63,11 @@ def create_emp(request):
                 myuser.email = empemail
                 myuser.save()
                 send_mail(
-                                    'Password for new employee',
-                                    f'{empname} password is {password}  \n This is a system generated password.\n You can change it later! \n Please Do not Reply. ' ,
-                                    'triinfotechmail@gmail.com',
-                                    [empemail],
+                                    subject = 'Password for new employee',
+                                    message = f'{empname} password is {password}\n This is a system generated password.\n You can change it later! \n Please Do not Reply. ' ,
+                                    from_email = "triinfotechmail@gmail.com",
+                                    
+                                    recipient_list = [empemail],
                                     fail_silently=False,
                                 ) 
                 return redirect("show_emp")
@@ -158,7 +159,7 @@ def create_emp(request):
 
 def show_emp(request):
     if request.user.is_staff:
-        employees = Emp.objects.all()
+        employees = Emp.objects.all().order_by("-id")
         return render(request,"emp_crud/show_emp.html",{"employees":employees})
     else:
         return redirect("login")

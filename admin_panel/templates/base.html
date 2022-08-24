@@ -182,10 +182,17 @@
  
 
                                        <li>
-                                          <a href="{% url 'arp_items' %} " data-bs-original-title="" class="d-block">
+                                          <a href="{% url 'products' %} " data-bs-original-title="" class="d-block">
                                              <img src="{% static 'images/items.png' %} "
                                                 style="height:20px;margin-right:5px;">
-                                             <span>Items</span>
+                                             <span>Products</span>
+                                          </a>
+                                       </li>
+                                       <li>
+                                          <a href="{% url 'services' %} " data-bs-original-title="" class="d-block">
+                                             <img src="{% static 'images/items.png' %} "
+                                                style="height:20px;margin-right:5px;">
+                                             <span>Services</span>
                                           </a>
                                        </li>
                                        {% comment %} <li>
@@ -376,184 +383,14 @@
 
          {% endblock content %}
 
-         <!-- footer  -->
-         <div class="modal fade" id="foodDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-               <div class="modal-content">
-                  <div class="modal-header">
-                     <h5 class="modal-title" id="checkOut">Food Details</h5>
-                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"
-                        data-bs-original-title="" title=""></button>
-                  </div>
-                  <div class="modal-body pt-1" style="text-align:left;">
-                     <div class="project-box p-0 mb-0" style="border: 0;">
-                        <div class="row">
-                           <div class="col-md-7">
-                              <p class="mb-0">Customer Name : <b>Sajib Saha (9804589658)</b></p>
-
-                              <p class="mb-0">Booking Date : <b>01/06/2022 To 03/06/2022</b> <span
-                                    class="badge rounded-pill badge-info p-relative text-center mt-0"
-                                    style="position: relative;top: 0;right: 0;">Duration : 2 Nights</span></p>
-                           </div>
-
-                           <div class="col-md-5">
-                              <p class="mb-0" style="
-                    text-align: right;
-                ">GSTIN : <b>65465465465</b></p>
-
-
-                           </div>
-                        </div>
-                        <div class="table-responsive mt-3">
-                           <table class="table">
-                              <thead>
-                                 <tr>
-                                    <th>Sl No.</th>
-                                    <th>Date</th>
-                                    <th>Food Category</th>
-                                    <th>Food Name</th>
-                                    <th>RATE/DISH</th>
-                                    <th>Quantity</th>
-                                    <th>Total Amount</th>
-                                 </tr>
-                              </thead>
-                              <tbody>
-                                 <tr>
-                                    <td>1.</td>
-                                    <td>10/02/2022</td>
-                                    <td><span class="badge badge-danger f-12"
-                                          style="position: relative;right: 0;top: -2px;padding: 3px 6px 0;letter-spacing: 0;">Non
-                                          Veg</span></td>
-                                    <td>Chicken Burger With French Fries (Non Veg)</td>
-                                    <td><i class="fa fa-inr"></i> 199/-</td>
-                                    <td>2 PCS</td>
-                                    <td style="
-                    text-align: right;
-                "><i class="fa fa-inr"></i> 425/-</td>
-                                 </tr>
-
-
-
-                                 <tr>
-                                    <td>1.</td>
-                                    <td>10/02/2022</td>
-                                    <td><span class="badge badge-primary f-12"
-                                          style="position: relative;right: 0;top: -2px;padding: 3px 6px 0;letter-spacing: 0;">Veg</span>
-                                    </td>
-                                    <td>Chicken Burger With French Fries (Non Veg)</td>
-                                    <td><i class="fa fa-inr"></i> 199/-</td>
-                                    <td>2 PCS</td>
-                                    <td style="
-                    text-align: right;
-                "><i class="fa fa-inr"></i> 425/-</td>
-                                 </tr>
-                                 <tr>
-                                    <td>1.</td>
-                                    <td>10/02/2022</td>
-                                    <td><span class="badge badge-warning f-12"
-                                          style="position: relative;right: 0;top: -2px;padding: 3px 6px 0;letter-spacing: 0;">Beverage</span>
-                                    </td>
-                                    <td>Chicken Burger With French Fries (Non Veg)</td>
-                                    <td><i class="fa fa-inr"></i> 199/-</td>
-                                    <td>2 PCS</td>
-                                    <td style="
-                    text-align: right;
-                "><i class="fa fa-inr"></i> 425/-</td>
-                                 </tr>
-                                 <tr>
-                                    <td>1.</td>
-                                    <td>10/02/2022</td>
-                                    <td><span class="badge badge-danger f-12"
-                                          style="position: relative;right: 0;top: -2px;padding: 3px 6px 0;letter-spacing: 0;">Non
-                                          Veg</span></td>
-                                    <td>Chicken Burger With French Fries (Non Veg)</td>
-                                    <td><i class="fa fa-inr"></i> 199/-</td>
-                                    <td>2 PCS</td>
-                                    <td style="
-                    text-align: right;
-                "><i class="fa fa-inr"></i> 425/-</td>
-                                 </tr>
-                                 <tr>
-                                    <td colspan="5" style="
-                    font-size: 18px;
-                    font-weight: bold;
-                ">Total</td>
-
-
-
-
-                                    <td style="
-                    font-size: 18px;
-                    font-weight: bold;
-                ">6 PCS</td>
-                                    <td style="
-                    font-size: 18px;
-                    font-weight: bold;
-                    text-align: right;
-                "><i class="fa fa-inr"></i> 1275/-</td>
-                                 </tr>
-                                 <tr>
-
-
-
-
-
-                                    <td style="
-                    text-align: right;
-                " colspan="6">CGST (4%)</td>
-                                    <td style="text-align: right;"><i class="fa fa-inr"></i> 100/-</td>
-                                 </tr>
-                                 <tr>
-
-
-
-
-
-                                    <td style="
-                    text-align: right;
-                " colspan="6">SGST (4%)</td>
-                                    <td style="text-align: right;"><i class="fa fa-inr"></i> 100/-</td>
-                                 </tr>
-                                 <tr>
-                                    <td colspan="5" style="
-                    font-size: 18px;
-                    font-weight: bold;
-                ">Total Taxable Amount</td>
-
-
-
-
-                                    <td style="
-                    font-size: 18px;
-                    font-weight: bold;
-                "></td>
-                                    <td style="
-                    font-size: 18px;
-                    font-weight: bold;
-                    text-align: right;
-                "><i class="fa fa-inr"></i> 1475/-</td>
-                                 </tr>
-                              </tbody>
-
-                           </table>
-                        </div>
-
-                     </div>
-                  </div>
-                  <!-- <div class="modal-footer">
-                            <input class="btn btn-light" type="reset" value="Cancel" data-bs-dismiss="modal" aria-label="Close">
-                            <a href="print_payment_voucher.html" target="_blank"> <button type="submit" class="btn btn-primary tx-13 py-1">Generate Slip</button></a>
-                         </div> -->
-               </div>
-            </div>
-         </div>
+         
 
          <!-- footer start-->
          <footer class="footer">
             <div class="container-fluid">
                <div class="row">
                   <div class="col-md-12 footer-copyright text-center">
-                     <p class="mb-0">Seuli Enterprise Design & Developed By <a href="">Diligent IItech Private
+                     <p class="mb-0">Developed By <a href="">Diligent IItech Private
                            Limied</a>.</p>
                   </div>
                </div>

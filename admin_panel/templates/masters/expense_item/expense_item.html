@@ -40,8 +40,9 @@
                             
                             <tr>
                                 <td class="rs-pr-0">
-                                    <span class="badge rounded-pill badge-primary visible-xs">{{ forloop.counter }}</span>
-                                    <span class="hidden-xs">{{ forloop.counter }}</span>
+                                    <!--<span class="badge rounded-pill badge-primary visible-xs">{{ forloop.counter }}</span>-->
+                                    <!--<span class="hidden-xs">{{ forloop.counter }}</span>-->
+                                    <span >{{ forloop.counter}}</span>
                                 </td>
                                 <td>{{ item.name }}</td>
                                 <td class="rs-text-right"><a href="{% url 'expense_item_edit' item.id %}" class="btn btn-outline-primary">Edit</a>

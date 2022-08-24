@@ -23,6 +23,23 @@
                 </div>
             </div>
         </div>
+        <div class="card p-3 py-2 project-list">
+            <div class="row">
+                <form action="" method="post">
+                    {% csrf_token %}
+                <div class="col-md-3">
+                    <select name="year" class="form-control" id="year">
+                        <option value="">Select year</option>
+                        {% for year in years %}
+                          <option value="{year.id}">{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-6 ml-auto">
+                    <input type="submit" class= "btn btn-outline-success" value="Search">
+                </div></form>
+            </div>
+        </div>
         <div class="card rs-mt-10 rs-br-0">
             <div class="card-body p-4 rs-p-0">
                 <div class="">

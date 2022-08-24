@@ -55,7 +55,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Tax Type</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                        <select name="tax_type" >
+                        <select name="tax_type" id = "tax_type" >
                             {% for i,j in service.taxTypes %}   
                                 <option value="{{ i }}">{{ j }}</option>
                             {% endfor %}
@@ -71,7 +71,7 @@
                      <label class="col-md-4 col-form-label rs-pb-0">Select Tax Rate</label>
                      <div class="col-md-8">
                         <div class="input-group">
-                        <select name="tax_rate" id="select tax rate">
+                        <select name="tax_rate" id="tax_rate">
                             
                             {% for i,j in gst %}
                                 <option value="{{ i }}">{{ j }}</option>
@@ -101,3 +101,19 @@
 
 
 {% endblock content %}
+
+{% block script %}
+<script>
+
+   $(function() {
+               $("#tax_type").change(function() {
+                   if ($(this).val() == "withoutTax") {
+                       document.getElementById("tax_rate").style.display = "none";
+                       $("#tax_rate")[0].selectedIndex = 12;
+                   }
+                   else
+                       document.getElementById("tax_rate").style.display = "block";
+               });
+           });
+   </script>
+{% endblock script %}

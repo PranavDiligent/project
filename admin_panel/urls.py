@@ -49,17 +49,19 @@ urlpatterns = [
     path("accounting_year_delete/<int:id>",views.accounting_year_delete,name="accounting_year_delete"),
    
    
-    path("arp_items/",views.arp_items,name="arp_items"),
+    # path("arp_items/",views.arp_items,name="arp_items"),
+    path("products/",views.products,name="products"),
     path("product_add/",views.product_add,name="product_add"),
     path("product_edit/<int:id>",views.product_edit,name="product_edit"),
     path("product_delete/<int:id>",views.product_delete,name="product_delete"),
 
+    path("services/",views.services,name="services"),
     path("service_add/",views.service_add,name="service_add"),
     path("service_edit/<int:id>",views.service_edit,name="service_edit"),
     path("service_delete/<int:id>",views.service_delete,name="service_delete"),
 
 
-    path("prp_service_add/",views.prp_service_add,name="prp_service_add"),
+    # path("prp_service_add/",views.prp_service_add,name="prp_service_add"),
     # path("arp_service_edit/<int:id>",views.arp_service_edit,name="arp_service_edit"),
 
 

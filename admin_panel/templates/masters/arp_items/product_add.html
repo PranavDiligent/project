@@ -228,6 +228,7 @@ $(function() {
             $("#purchase_taxtype").change(function() {
                 if ($(this).val() == "withoutTax") {
                     document.getElementById("purchase_tax_rate").style.display = "none";
+                    $("#purchase_tax_rate")[0].selectedIndex = 12;
                 }
                 else
                     document.getElementById("purchase_tax_rate").style.display = "block";
@@ -241,6 +242,7 @@ $(function() {
             $("#sale_tax_type").change(function() {
                 if ($(this).val() == "withoutTax") {
                     document.getElementById("sale_tax_rate").style.display = "none";
+                    $("#sale_tax_rate")[0].selectedIndex = 12;
                 }
                 else
                     document.getElementById("sale_tax_rate").style.display = "block";
